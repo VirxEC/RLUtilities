@@ -9,6 +9,7 @@
 #include "simulation/car.h"
 #include "simulation/goal.h"
 #include "simulation/boost_pad.h"
+#include "rust/cxx.h"
 
 #ifdef GENERATE_PYTHON_BINDINGS
 #include <pybind11/pybind11.h>
@@ -65,5 +66,11 @@ struct Game {
   void read_field_info(const pybind11::object& field_info);
   void read_packet(const pybind11::object& packet);
   #endif
+
+  void resize_pads(int num_pads);
+  void reset_pad(int index, float x, float y, float z, bool is_full_boost);
+
+  void resize_goals(int num_goals);
+  void reset_goal(int index, float loc_x, float loc_y, float loc_z, float dir_x, float dir_y, float zdir_, float width, float height, int team);
 
 };
