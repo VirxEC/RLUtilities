@@ -73,4 +73,7 @@ struct Game {
   void resize_goals(int num_goals);
   void reset_goal(int index, float loc_x, float loc_y, float loc_z, float dir_x, float dir_y, float zdir_, float width, float height, int team);
 
+  void set_game_info(float current_time, float time_remaining, float gravity_z, bool is_match_ended, bool is_round_active, bool is_kickoff_pause);
+
+  void resize_cars(int num_cars);
 };

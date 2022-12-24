@@ -58,7 +58,9 @@ void Game::set_mode(std::string gamemode) {
 }
 
 void Game::resize_pads(int num_pads) {
-  pads.resize(num_pads);
+  if (num_pads != pads.size()) {
+    pads.resize(num_pads);
+  }
 }
 
 void Game::reset_pad(int index, float x, float y, float z, bool is_full_boost) {
@@ -70,7 +72,9 @@ void Game::reset_pad(int index, float x, float y, float z, bool is_full_boost) {
 }
 
 void Game::resize_goals(int num_goals) {
-  goals.resize(num_goals);
+  if (num_goals != goals.size()) {
+    goals.resize(num_goals);
+  }
 }
 
 void Game::reset_goal(int index, float pos_x, float pos_y, float pos_z, float dir_x, float dir_y, float zdir_, float width, float height, int team) {
@@ -80,4 +84,31 @@ void Game::reset_goal(int index, float pos_x, float pos_y, float pos_z, float di
   goals[index].height = height;
   goals[index].team = team;
   goals[index].state = GoalState::Unknown;
+}
+
+void Game::set_game_info(float current_time, float game_time_remaining, float gravity_z, bool is_match_ended, bool is_round_active, bool is_kickoff_pause) {
+  time_delta = current_time - time;
+  time = current_time;
+  time_remaining = game_time_remaining;
+  gravity = {0.0f, 0.0f, gravity_z};
+
+  if (is_match_ended) {
+    state = GameState::Ended;
+  } else {
+    if (is_round_active) {
+      if (is_kickoff_pause) {
+        state = GameState::Kickoff;
+      } else {
+        state = GameState::Active;
+      }
+    } else {
+      state = GameState::Inactive;
+    }
+  }
+}
+
+void Game::resize_cars(int num_cars) {
+  if (num_cars != cars.size()) {
+      cars.resize(num_cars);
+  }
 }
