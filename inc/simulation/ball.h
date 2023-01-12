@@ -5,6 +5,8 @@
 
 #include "linear_algebra/math.h"
 
+#include <array>
+
 enum class BallShape : uint8_t {
   Sphere,
   Puck,
@@ -44,6 +46,9 @@ class Ball {
   static float I; // moment of inertia
 
   Ball();
+
+  void update(float pos_x, float pos_y, float pos_z, float vel_x, float vel_y, float vel_z, float ang_x, float ang_y, float ang_z);
+  std::array<float, 3> get_position() const;
 
   sphere hitbox();
   void step(float dt);

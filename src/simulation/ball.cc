@@ -28,6 +28,16 @@ Ball::Ball() {
 	angular_velocity = vec3{ 0.0f, 0.0f, 0.0f };
 }
 
+void Ball::update(float pos_x, float pos_y, float pos_z, float vel_x, float vel_y, float vel_z, float ang_x, float ang_y, float ang_z) {
+	position = vec3{ pos_x, pos_y, pos_z };
+	velocity = vec3{ vel_x, vel_y, vel_z };
+	angular_velocity = vec3{ ang_x, ang_y, ang_z };
+}
+
+std::array<float, 3> Ball::get_position() const {
+	return { position[0], position[1], position[2] };
+}
+
 sphere Ball::hitbox() {
 	return sphere{ position, collision_radius };
 }

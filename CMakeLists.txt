@@ -75,7 +75,3 @@ if (TARGET_LANGUAGE STREQUAL "python" OR TARGET_LANGUAGE STREQUAL "both")
   file(COPY ${PROJECT_SOURCE_DIR}/assets DESTINATION ${PROJECT_SOURCE_DIR}/python/rlutilities)
 
 endif()
-
-set(ASSET_DIR ${PROJECT_SOURCE_DIR}/assets/)
-configure_file ("${CMAKE_CURRENT_SOURCE_DIR}/inc/misc/config.h.in"
-                "${CMAKE_CURRENT_SOURCE_DIR}/inc/misc/config.h")
