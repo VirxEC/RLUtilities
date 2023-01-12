@@ -4,6 +4,7 @@
 #include <fstream>
 #include <string>
 #include <vector>
+#include <memory>
 
 #include "simulation/ball.h"
 #include "simulation/car.h"
@@ -76,4 +77,6 @@ struct Game {
   void set_game_info(float current_time, float time_remaining, float gravity_z, bool is_match_ended, bool is_round_active, bool is_kickoff_pause);
 
   void resize_cars(int num_cars);
+
+  Ball get_ball();
 };

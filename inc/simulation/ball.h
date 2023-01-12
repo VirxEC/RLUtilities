@@ -47,7 +47,6 @@ class Ball {
 
   Ball();
 
-  void update(std::array<float, 3> pos, std::array<float, 3> vel, std::array<float, 3> ang_vel);
   std::array<float, 3> get_position() const;
 
   sphere hitbox();

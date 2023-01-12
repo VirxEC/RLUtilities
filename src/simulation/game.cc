@@ -112,3 +112,7 @@ void Game::resize_cars(int num_cars) {
       cars.resize(num_cars);
   }
 }
+
+Ball Game::get_ball() {
+  return ball;
+}
