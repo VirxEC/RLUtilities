@@ -113,6 +113,10 @@ void Game::resize_cars(int num_cars) {
   }
 }
 
-Ball Game::get_ball() {
+Ball Game::get_ball() const {
   return ball;
+}
+
+void Game::set_ball(Ball new_ball) {
+  ball = new_ball;
 }

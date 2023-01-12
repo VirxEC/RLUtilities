@@ -78,5 +78,6 @@ struct Game {
 
   void resize_cars(int num_cars);
 
-  Ball get_ball();
+  Ball get_ball() const;
+  void set_ball(Ball ball);
 };

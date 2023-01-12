@@ -47,9 +47,21 @@ class Ball {
 
   Ball();
 
-  std::array<float, 3> get_position() const;
+  void update_from_ball(Ball ball);
 
-  sphere hitbox();
+  float get_time() const;
+  void set_time(float t);
+
+  std::array<float, 3> get_position() const;
+  void set_position(std::array<float, 3> pos);
+
+  std::array<float, 3> get_velocity() const;
+  void set_velocity(std::array<float, 3> vel);
+
+  std::array<float, 3> get_angular_velocity() const;
+  void set_angular_velocity(std::array<float, 3> ang_vel);
+
+  sphere hitbox() const;
   void step(float dt);
   void step(float dt, const Car & c);
 };
