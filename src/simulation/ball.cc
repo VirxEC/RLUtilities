@@ -28,10 +28,10 @@ Ball::Ball() {
 	angular_velocity = vec3{ 0.0f, 0.0f, 0.0f };
 }
 
-void Ball::update(float pos_x, float pos_y, float pos_z, float vel_x, float vel_y, float vel_z, float ang_x, float ang_y, float ang_z) {
-	position = vec3{ pos_x, pos_y, pos_z };
-	velocity = vec3{ vel_x, vel_y, vel_z };
-	angular_velocity = vec3{ ang_x, ang_y, ang_z };
+void Ball::update(std::array<float, 3> pos, std::array<float, 3> vel, std::array<float, 3> ang_vel) {
+	position = vec3{ pos[0], pos[1], pos[2] };
+	velocity = vec3{ vel[0], vel[1], vel[2] };
+	angular_velocity = vec3{ ang_vel[0], ang_vel[1], ang_vel[2] };
 }
 
 std::array<float, 3> Ball::get_position() const {

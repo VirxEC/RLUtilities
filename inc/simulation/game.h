@@ -68,10 +68,10 @@ struct Game {
   #endif
 
   void resize_pads(int num_pads);
-  void reset_pad(int index, float x, float y, float z, bool is_full_boost);
+  void reset_pad(int index, std::array<float, 3> position, bool is_full_boost);
 
   void resize_goals(int num_goals);
-  void reset_goal(int index, float loc_x, float loc_y, float loc_z, float dir_x, float dir_y, float zdir_, float width, float height, int team);
+  void reset_goal(int index, std::array<float, 3> position, std::array<float, 3> direction, float width, float height, int team);
 
   void set_game_info(float current_time, float time_remaining, float gravity_z, bool is_match_ended, bool is_round_active, bool is_kickoff_pause);
 

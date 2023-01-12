@@ -63,8 +63,8 @@ void Game::resize_pads(int num_pads) {
   }
 }
 
-void Game::reset_pad(int index, float x, float y, float z, bool is_full_boost) {
-  pads[index].position = {x, y, z};
+void Game::reset_pad(int index, std::array<float, 3> position, bool is_full_boost) {
+  pads[index].position = { position[0], position[1], position[2] };
   pads[index].type = is_full_boost ? BoostPadType::Full : BoostPadType::Partial;
   pads[index].state = BoostPadState::Available;
   pads[index].timer = 0.0f;
@@ -77,9 +77,9 @@ void Game::resize_goals(int num_goals) {
   }
 }
 
-void Game::reset_goal(int index, float pos_x, float pos_y, float pos_z, float dir_x, float dir_y, float zdir_, float width, float height, int team) {
-  goals[index].position = {pos_x, pos_y, pos_z};
-  goals[index].direction = {dir_x, dir_y, zdir_};
+void Game::reset_goal(int index, std::array<float, 3> position, std::array<float, 3> direction, float width, float height, int team) {
+  goals[index].position = { position[0], position[1], position[2] };
+  goals[index].direction = { direction[0], direction[1], direction[2] };
   goals[index].width = width;
   goals[index].height = height;
   goals[index].team = team;
