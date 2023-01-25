@@ -69,34 +69,6 @@ std::unique_ptr<std::vector<Goal>> new_goal_vec() {
   return std::make_unique<std::vector<Goal>>();
 }
 
-void Game::resize_goals(int num_goals) {
-  if (num_goals != goals.size()) {
-    goals.resize(num_goals);
-  }
-}
-
-void Game::reset_goal(int index, vec<3> position, vec<3> direction, float width, float height, int team) {
-  goals[index].position = position;
-  goals[index].direction = direction;
-  goals[index].width = width;
-  goals[index].height = height;
-  goals[index].team = team;
-  goals[index].state = GoalState::Unknown;
-}
-
-void Game::resize_cars(int num_cars) {
-  if (num_cars != cars.size()) {
-      cars.resize(num_cars);
-  }
-}
-
-void Game::reset_car_physics(int index, vec<3> position, vec<3> velocity, vec<3> angular_velocity, vec<3> rotation) {
-  cars[index].position = position;
-  cars[index].velocity = velocity;
-  cars[index].angular_velocity = angular_velocity;
-  cars[index].orientation = euler_to_rotation(rotation);
-}
-
-const Car& Game::get_car(int index) const {
-  return cars[index];
+std::unique_ptr<std::vector<Car>> new_car_vec() {
+  return std::make_unique<std::vector<Car>>();
 }

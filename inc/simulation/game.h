@@ -68,16 +68,10 @@ struct Game {
   void read_field_info(const pybind11::object& field_info);
   void read_packet(const pybind11::object& packet);
   #endif
-
-  void resize_goals(int num_goals);
-  void reset_goal(int index, vec<3> position, vec<3> direction, float width, float height, int team);
-
-  void resize_cars(int num_cars);
-  void reset_car_physics(int index, vec<3> position, vec<3> velocity, vec<3> angular_velocity, vec<3> rotation);
-  const Car& get_car(int index) const;
 };
 
 void set_mode(const rust::String);
 
 std::unique_ptr<std::vector<BoostPad>> new_boostpad_vec();
 std::unique_ptr<std::vector<Goal>> new_goal_vec();
+std::unique_ptr<std::vector<Car>> new_car_vec();
