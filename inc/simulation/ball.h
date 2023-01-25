@@ -52,14 +52,14 @@ class Ball {
   float get_time() const;
   void set_time(float t);
 
-  std::array<float, 3> get_position() const;
-  void set_position(std::array<float, 3> pos);
+  vec<3> get_position() const;
+  void set_position(vec<3> pos);
 
-  std::array<float, 3> get_velocity() const;
-  void set_velocity(std::array<float, 3> vel);
+  vec<3> get_velocity() const;
+  void set_velocity(vec<3> vel);
 
-  std::array<float, 3> get_angular_velocity() const;
-  void set_angular_velocity(std::array<float, 3> ang_vel);
+  vec<3> get_angular_velocity() const;
+  void set_angular_velocity(vec<3> ang_vel);
 
   sphere hitbox() const;
   void step(float dt);

@@ -43,27 +43,27 @@ void Ball::set_time(float t) {
 	time = t;
 }
 
-std::array<float, 3> Ball::get_position() const {
+vec<3> Ball::get_position() const {
 	return { position[0], position[1], position[2] };
 }
 
-void Ball::set_position(std::array<float, 3> pos) {
+void Ball::set_position(vec<3> pos) {
 	position = { pos[0], pos[1], pos[2] };
 }
 
-std::array<float, 3> Ball::get_velocity() const {
+vec<3> Ball::get_velocity() const {
 	return { velocity[0], velocity[1], velocity[2] };
 }
 
-void Ball::set_velocity(std::array<float, 3> vel) {
+void Ball::set_velocity(vec<3> vel) {
 	velocity = { vel[0], vel[1], vel[2] };
 }
 
-std::array<float, 3> Ball::get_angular_velocity() const {
+vec<3> Ball::get_angular_velocity() const {
 	return { angular_velocity[0], angular_velocity[1], angular_velocity[2] };
 }
 
-void Ball::set_angular_velocity(std::array<float, 3> ang_vel) {
+void Ball::set_angular_velocity(vec<3> ang_vel) {
 	angular_velocity = { ang_vel[0], ang_vel[1], ang_vel[2] };
 }
 

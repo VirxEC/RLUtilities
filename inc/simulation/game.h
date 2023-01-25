@@ -10,7 +10,6 @@
 #include "simulation/car.h"
 #include "simulation/goal.h"
 #include "simulation/boost_pad.h"
-#include "rust/cxx.h"
 
 #ifdef GENERATE_PYTHON_BINDINGS
 #include <pybind11/pybind11.h>
@@ -69,10 +68,10 @@ struct Game {
   #endif
 
   void resize_pads(int num_pads);
-  void reset_pad(int index, std::array<float, 3> position, bool is_full_boost);
+  void reset_pad(int index, vec<3> position, bool is_full_boost);
 
   void resize_goals(int num_goals);
-  void reset_goal(int index, std::array<float, 3> position, std::array<float, 3> direction, float width, float height, int team);
+  void reset_goal(int index, vec<3> position, vec<3> direction, float width, float height, int team);
 
   void set_game_info(float current_time, float time_remaining, float gravity_z, bool is_match_ended, bool is_round_active, bool is_kickoff_pause);
 
