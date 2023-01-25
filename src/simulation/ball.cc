@@ -28,45 +28,6 @@ Ball::Ball() {
 	angular_velocity = vec3{ 0.0f, 0.0f, 0.0f };
 }
 
-void Ball::update_from_ball(Ball ball) {
-	time = ball.time;
-	position = ball.position;
-	velocity = ball.velocity;
-	angular_velocity = ball.angular_velocity;
-}
-
-float Ball::get_time() const {
-	return time;
-}
-
-void Ball::set_time(float t) {
-	time = t;
-}
-
-vec<3> Ball::get_position() const {
-	return position;
-}
-
-void Ball::set_position(vec<3> pos) {
-	position = pos;
-}
-
-vec<3> Ball::get_velocity() const {
-	return velocity;
-}
-
-void Ball::set_velocity(vec<3> vel) {
-	velocity = vel;
-}
-
-vec<3> Ball::get_angular_velocity() const {
-	return angular_velocity;
-}
-
-void Ball::set_angular_velocity(vec<3> ang_vel) {
-	angular_velocity = ang_vel;
-}
-
 sphere Ball::hitbox() const {
 	return sphere{ position, collision_radius };
 }

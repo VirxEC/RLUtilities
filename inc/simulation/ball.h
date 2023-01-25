@@ -47,20 +47,6 @@ class Ball {
 
   Ball();
 
-  void update_from_ball(Ball ball);
-
-  float get_time() const;
-  void set_time(float t);
-
-  vec<3> get_position() const;
-  void set_position(vec<3> pos);
-
-  vec<3> get_velocity() const;
-  void set_velocity(vec<3> vel);
-
-  vec<3> get_angular_velocity() const;
-  void set_angular_velocity(vec<3> ang_vel);
-
   sphere hitbox() const;
   void step(float dt);
   void step(float dt, const Car & c);

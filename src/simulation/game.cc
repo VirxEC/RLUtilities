@@ -57,18 +57,16 @@ void Game::set_mode(std::string gamemode) {
   }
 }
 
-void Game::set_pads(const rust::Slice<const BoostPad> new_pads) {
-  if (new_pads.size() != pads.size()) {
-    pads.resize(new_pads.size());
-  }
+void set_mode(rust::String gamemode) {
+  Game::set_mode(std::string(gamemode));
+}
 
-  for (int i = 0; i < pads.size(); i++) {
-    pads[i].position = new_pads[i].position;
-    pads[i].type = new_pads[i].type;
-    pads[i].state = new_pads[i].state;
-    pads[i].timer = new_pads[i].timer;
-    pads[i].actor_id = new_pads[i].actor_id;
-  }
+std::unique_ptr<std::vector<BoostPad>> new_boostpad_vec() {
+  return std::make_unique<std::vector<BoostPad>>();
+}
+
+std::unique_ptr<std::vector<Goal>> new_goal_vec() {
+  return std::make_unique<std::vector<Goal>>();
 }
 
 void Game::resize_goals(int num_goals) {
@@ -86,27 +84,6 @@ void Game::reset_goal(int index, vec<3> position, vec<3> direction, float width,
   goals[index].state = GoalState::Unknown;
 }
 
-void Game::set_game_info(float current_time, float game_time_remaining, float gravity_z, bool is_match_ended, bool is_round_active, bool is_kickoff_pause) {
-  time_delta = current_time - time;
-  time = current_time;
-  time_remaining = game_time_remaining;
-  gravity = {0.0f, 0.0f, gravity_z};
-
-  if (is_match_ended) {
-    state = GameState::Ended;
-  } else {
-    if (is_round_active) {
-      if (is_kickoff_pause) {
-        state = GameState::Kickoff;
-      } else {
-        state = GameState::Active;
-      }
-    } else {
-      state = GameState::Inactive;
-    }
-  }
-}
-
 void Game::resize_cars(int num_cars) {
   if (num_cars != cars.size()) {
       cars.resize(num_cars);
@@ -122,12 +99,4 @@ void Game::reset_car_physics(int index, vec<3> position, vec<3> velocity, vec<3>
 
 const Car& Game::get_car(int index) const {
   return cars[index];
-}
-
-Ball Game::get_ball() const {
-  return ball;
-}
-
-void Game::set_ball(Ball new_ball) {
-  ball = new_ball;
 }
