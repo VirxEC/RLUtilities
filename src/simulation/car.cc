@@ -14,15 +14,15 @@ const float Car::v_max = 2300.0f;
 const float Car::w_max = 5.5f;
 
 
-vec3 Car::forward() const { 
+vec<3> Car::forward() const { 
   return vec3{orientation(0, 0), orientation(1, 0), orientation(2, 0)}; 
 }
 
-vec3 Car::left() const { 
+vec<3> Car::left() const { 
   return vec3{orientation(0, 1), orientation(1, 1), orientation(2, 1)}; 
 }
 
-vec3 Car::up() const { 
+vec<3> Car::up() const { 
   return vec3{orientation(0, 2), orientation(1, 2), orientation(2, 2)}; 
 }
 

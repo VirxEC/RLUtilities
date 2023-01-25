@@ -140,9 +140,9 @@ class Car {
 
   void update(Car);
 
-  vec3 forward() const;
-  vec3 left() const;
-  vec3 up() const;
+  vec<3> forward() const;
+  vec<3> left() const;
+  vec<3> up() const;
 
   obb hitbox() const;
 

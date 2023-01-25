@@ -11,6 +11,8 @@
 #include "simulation/goal.h"
 #include "simulation/boost_pad.h"
 
+#include "rust/cxx.h"
+
 #ifdef GENERATE_PYTHON_BINDINGS
 #include <pybind11/pybind11.h>
 #endif
@@ -67,8 +69,7 @@ struct Game {
   void read_packet(const pybind11::object& packet);
   #endif
 
-  void resize_pads(int num_pads);
-  void reset_pad(int index, vec<3> position, bool is_full_boost);
+  void set_pads(const rust::Slice<const BoostPad> new_pads);
 
   void resize_goals(int num_goals);
   void reset_goal(int index, vec<3> position, vec<3> direction, float width, float height, int team);
@@ -76,6 +77,8 @@ struct Game {
   void set_game_info(float current_time, float time_remaining, float gravity_z, bool is_match_ended, bool is_round_active, bool is_kickoff_pause);
 
   void resize_cars(int num_cars);
+  void reset_car_physics(int index, vec<3> position, vec<3> velocity, vec<3> angular_velocity, vec<3> rotation);
+  const Car& get_car(int index) const;
 
   Ball get_ball() const;
   void set_ball(Ball ball);

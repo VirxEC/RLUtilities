@@ -57,18 +57,18 @@ void Game::set_mode(std::string gamemode) {
   }
 }
 
-void Game::resize_pads(int num_pads) {
-  if (num_pads != pads.size()) {
-    pads.resize(num_pads);
+void Game::set_pads(const rust::Slice<const BoostPad> new_pads) {
+  if (new_pads.size() != pads.size()) {
+    pads.resize(new_pads.size());
   }
-}
 
-void Game::reset_pad(int index, vec<3> position, bool is_full_boost) {
-  pads[index].position = { position[0], position[1], position[2] };
-  pads[index].type = is_full_boost ? BoostPadType::Full : BoostPadType::Partial;
-  pads[index].state = BoostPadState::Available;
-  pads[index].timer = 0.0f;
-  pads[index].actor_id = 0;
+  for (int i = 0; i < pads.size(); i++) {
+    pads[i].position = new_pads[i].position;
+    pads[i].type = new_pads[i].type;
+    pads[i].state = new_pads[i].state;
+    pads[i].timer = new_pads[i].timer;
+    pads[i].actor_id = new_pads[i].actor_id;
+  }
 }
 
 void Game::resize_goals(int num_goals) {
@@ -78,8 +78,8 @@ void Game::resize_goals(int num_goals) {
 }
 
 void Game::reset_goal(int index, vec<3> position, vec<3> direction, float width, float height, int team) {
-  goals[index].position = { position[0], position[1], position[2] };
-  goals[index].direction = { direction[0], direction[1], direction[2] };
+  goals[index].position = position;
+  goals[index].direction = direction;
   goals[index].width = width;
   goals[index].height = height;
   goals[index].team = team;
@@ -111,6 +111,17 @@ void Game::resize_cars(int num_cars) {
   if (num_cars != cars.size()) {
       cars.resize(num_cars);
   }
+}
+
+void Game::reset_car_physics(int index, vec<3> position, vec<3> velocity, vec<3> angular_velocity, vec<3> rotation) {
+  cars[index].position = position;
+  cars[index].velocity = velocity;
+  cars[index].angular_velocity = angular_velocity;
+  cars[index].orientation = euler_to_rotation(rotation);
+}
+
+const Car& Game::get_car(int index) const {
+  return cars[index];
 }
 
 Ball Game::get_ball() const {

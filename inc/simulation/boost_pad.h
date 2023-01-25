@@ -13,7 +13,7 @@ enum class BoostPadType {
 };
 
 struct BoostPad {
-  vec3 position;
+  vec<3> position;
   BoostPadType type;
   BoostPadState state;
   float timer;

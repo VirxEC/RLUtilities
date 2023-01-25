@@ -44,27 +44,27 @@ void Ball::set_time(float t) {
 }
 
 vec<3> Ball::get_position() const {
-	return { position[0], position[1], position[2] };
+	return position;
 }
 
 void Ball::set_position(vec<3> pos) {
-	position = { pos[0], pos[1], pos[2] };
+	position = pos;
 }
 
 vec<3> Ball::get_velocity() const {
-	return { velocity[0], velocity[1], velocity[2] };
+	return velocity;
 }
 
 void Ball::set_velocity(vec<3> vel) {
-	velocity = { vel[0], vel[1], vel[2] };
+	velocity = vel;
 }
 
 vec<3> Ball::get_angular_velocity() const {
-	return { angular_velocity[0], angular_velocity[1], angular_velocity[2] };
+	return angular_velocity;
 }
 
 void Ball::set_angular_velocity(vec<3> ang_vel) {
-	angular_velocity = { ang_vel[0], ang_vel[1], ang_vel[2] };
+	angular_velocity = ang_vel;
 }
 
 sphere Ball::hitbox() const {
