@@ -16,7 +16,7 @@
 class Drive {
 
  public:
-  Car & car;
+  Car car;
 
   vec3 target;
   float speed;
@@ -25,7 +25,7 @@ class Drive {
   bool finished;
   Input controls;
 
-  Drive(Car & c);
+  Drive(Car c);
 
   void step(float dt);
 
@@ -46,3 +46,5 @@ class Drive {
 
 
 };
+
+Drive new_drive(Car c);

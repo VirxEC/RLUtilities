@@ -72,7 +72,7 @@ float Drive::max_turning_speed(float curvature) {
   return -1.0f;
 }
 
-Drive::Drive(Car & c) : car(c) {
+Drive::Drive(Car c) : car(c) {
 
   target = { NAN, NAN, NAN };
   speed = 1400.0f;
@@ -82,6 +82,10 @@ Drive::Drive(Car & c) : car(c) {
   controls = Input();
   finished = false;
 
+}
+
+Drive new_drive(Car c) {
+  return Drive(c);
 }
 
 void Drive::step(float dt) {
