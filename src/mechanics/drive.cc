@@ -72,7 +72,7 @@ float Drive::max_turning_speed(float curvature) {
   return -1.0f;
 }
 
-Drive::Drive(Car c) : car(c) {
+Drive::Drive() {
 
   target = { NAN, NAN, NAN };
   speed = 1400.0f;
@@ -84,15 +84,11 @@ Drive::Drive(Car c) : car(c) {
 
 }
 
-Drive new_drive(Car c) {
-  return Drive(c);
-}
+void Drive::step(Car const& car, float dt) {
 
-void Drive::step(float dt) {
+  steer_controller(car, dt);
 
-  steer_controller(dt);
-
-  speed_controller(dt);
+  speed_controller(car, dt);
 
   if (norm(car.position - target) < 100.0f) {
     finished = true;
@@ -100,7 +96,7 @@ void Drive::step(float dt) {
 
 }
 
-void Drive::steer_controller(float dt) {
+void Drive::steer_controller(Car const& car, float dt) {
 
 #if 1
 
@@ -183,7 +179,7 @@ void Drive::steer_controller(float dt) {
 
 }
 
-void Drive::speed_controller(float dt) {
+void Drive::speed_controller(Car const& car, float dt) {
 
   float vf = dot(car.velocity, car.forward());
 

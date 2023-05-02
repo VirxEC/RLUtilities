@@ -8,7 +8,7 @@
 #include <fstream>
 #include <algorithm>
 
-FollowPath::FollowPath(Car & c) : car(c), drive(c), dodge(c), dash(c) {
+FollowPath::FollowPath(Car & c) : car(c), drive(), dodge(c), dash(c) {
   finished = false;
   controls = Input();
 
@@ -45,7 +45,7 @@ void FollowPath::step(float dt) {
   drive.speed = (2.0f * v_avg + 4.0f * vf - v) / 5.0f;
   //drive.speed = v_avg;
 
-  drive.step(dt);
+  drive.step(car, dt);
   controls = drive.controls;
 
   finished = (T <= 0.0f);

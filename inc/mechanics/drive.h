@@ -16,8 +16,6 @@
 class Drive {
 
  public:
-  Car car;
-
   vec3 target;
   float speed;
   float reaction_time;
@@ -25,9 +23,9 @@ class Drive {
   bool finished;
   Input controls;
 
-  Drive(Car c);
+  Drive();
 
-  void step(float dt);
+  void step(Car const& car, float dt);
 
   static const float max_speed;
   static const float max_throttle_speed;
@@ -41,10 +39,8 @@ class Drive {
 
  private:
 
-  void steer_controller(float);
-  void speed_controller(float);
+  void steer_controller(Car const& car, float);
+  void speed_controller(Car const& car, float);
 
 
 };
-
-Drive new_drive(Car c);
